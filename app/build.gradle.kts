@@ -4,8 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.navigation.safeargs)
-    alias(libs.plugins.jetbrains.kotlin.kapt)
-//    alias(libs.plugins.)
+    alias(libs.plugins.ksp.gradle)
 }
 
 android {
@@ -79,7 +78,7 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     // Timber
     implementation(libs.timber)
@@ -92,9 +91,4 @@ dependencies {
 
     // UI Binding
     implementation(libs.flowbinding.android)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

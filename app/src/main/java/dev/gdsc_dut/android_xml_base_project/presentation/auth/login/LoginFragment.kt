@@ -3,6 +3,7 @@ package dev.gdsc_dut.android_xml_base_project.presentation.auth.login
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,12 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private val binding by viewBinding<FragmentLoginBinding>()
 
     private val viewModel by viewModels<LoginViewModel>()
+
+    override fun setupView() {
+        binding.signUpButton.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+    }
 
     override fun bindEvent() {
         binding.etEmail
@@ -52,9 +59,10 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 binding.btnLogin.isVisible = !it.isLoading
                 binding.progressBar.isVisible = it.isLoading
 
-//                if (it.isSuccess) {
+                if (it.isSuccess) {
                     startActivity<MainActivity>()
-//                }
+                    activity?.finish()
+                }
             }
 
         viewModel.uiState

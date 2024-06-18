@@ -2,6 +2,7 @@ package dev.gdsc_dut.android_xml_base_project.data.remote
 
 import dev.gdsc_dut.android_xml_base_project.data.remote.request.auth.LoginRequest
 import dev.gdsc_dut.android_xml_base_project.data.remote.request.auth.RegisterRequest
+import dev.gdsc_dut.android_xml_base_project.data.remote.response.LoginResponse
 import okhttp3.Call
 import okhttp3.Response
 import retrofit2.Retrofit
@@ -11,7 +12,7 @@ import retrofit2.http.POST
 
 interface APIService {
     @POST("auth/login")
-    suspend fun login(@Body body: LoginRequest)
+    suspend fun login(@Body body: LoginRequest): LoginResponse
 
     @POST("auth/register")
     suspend fun register(@Body body: RegisterRequest)

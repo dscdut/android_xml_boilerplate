@@ -49,4 +49,8 @@
     <string name="login">Login</string>
     <string name="login_dont_have_an_acount_label_text">Don\'t you have an account?\n</string>
     <string name="generic_sign_up">Sign up</string>
+    <string name="generic_register">Register</string>
+    <string name="generic_fullname">Full name</string>
+    <string name="generic_confirmation_password">Confirmation Password</string>
+    <string name="phone_number">Phone Number</string>
 </resources>
