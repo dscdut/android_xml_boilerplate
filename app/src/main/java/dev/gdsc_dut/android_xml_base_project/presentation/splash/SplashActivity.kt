@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import dev.gdsc_dut.android_xml_base_project.R
 import dev.gdsc_dut.android_xml_base_project.core.base.BaseActivity
 import dev.gdsc_dut.android_xml_base_project.core.extensions.startActivity
@@ -17,6 +18,7 @@ import dev.gdsc_dut.android_xml_base_project.presentation.main.MainActivity
 import kotlinx.coroutines.launch
 
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity(R.layout.activity_splash) {
 

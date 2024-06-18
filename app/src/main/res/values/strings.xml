@@ -43,4 +43,10 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="generic_email">Email</string>
+    <string name="generic_login">Login</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_dont_have_an_acount_label_text">Don\'t you have an account?\n</string>
+    <string name="generic_sign_up">Sign up</string>
 </resources>
