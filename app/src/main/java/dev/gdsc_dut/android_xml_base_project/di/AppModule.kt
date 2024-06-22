@@ -88,7 +88,7 @@ abstract class AppModule {
                 .Builder()
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .baseUrl("http://localhost:8080/")
+                .baseUrl("https://drf-boilerplate-2k96.onrender.com/api")
                 .build()
 
         @Provides

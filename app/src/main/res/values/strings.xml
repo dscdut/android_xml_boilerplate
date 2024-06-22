@@ -53,4 +53,14 @@
     <string name="generic_fullname">Full name</string>
     <string name="generic_confirmation_password">Confirmation Password</string>
     <string name="phone_number">Phone Number</string>
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="user_role">
+        <item>Admin</item>
+        <item>Member</item>
+
+    </string-array>
 </resources>
