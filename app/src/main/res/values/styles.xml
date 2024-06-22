@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/md_theme_light_primary</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="CustomTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/md_theme_light_secondary</item>
+        <item name="hintTextColor">@color/md_theme_light_secondary</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="borderRoundPercent">10</item>
+    </style>
+
+    <style name="CustomTextInputEditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/md_theme_light_secondary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="img_user_rounded">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>
