@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_management"
+    app:startDestination="@id/userManagementFragment">
+    <fragment
+        android:id="@+id/userManagementFragment"
+        android:name="dev.gdsc_dut.android_xml_base_project.presentation.main.user_management.UserManagementFragment"
+        android:label="fragment_user_management"
+        tools:layout="@layout/fragment_user_management">
+        <argument
+            android:name="name"
+            app:argType="string"/>
+    </fragment>
+
+</navigation>

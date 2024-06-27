@@ -38,7 +38,8 @@ class AuthenticationRepository
                 apiService
                     .login(body = LoginRequest(email, password))
                     .also {
-                        localUserDataSource.update(it.toString())
+                        localUserDataSource.update(it.access.toString())
+                        Timber.d("Token stored after login: ${it.access.toString()}") // Log the token here.
                     }
             }
         }
