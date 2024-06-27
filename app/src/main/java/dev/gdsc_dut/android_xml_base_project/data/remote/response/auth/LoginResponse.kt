@@ -1,4 +1,4 @@
-package dev.gdsc_dut.android_xml_base_project.data.remote.response
+package dev.gdsc_dut.android_xml_base_project.data.remote.response.auth
 
 import com.squareup.moshi.JsonClass
 

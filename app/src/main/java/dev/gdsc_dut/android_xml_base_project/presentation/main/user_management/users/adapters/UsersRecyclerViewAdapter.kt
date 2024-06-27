@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.gdsc_dut.android_xml_base_project.R
+import dev.gdsc_dut.android_xml_base_project.data.remote.response.user_management.GetUsersResponse
 import dev.gdsc_dut.android_xml_base_project.databinding.ItemSingleUserBinding
-import dev.gdsc_dut.android_xml_base_project.models.User
+import timber.log.Timber
 
-class UsersRecyclerViewAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<UsersRecyclerViewAdapter.ViewHolder>() {
+class UsersRecyclerViewAdapter(private val userList: List<GetUsersResponse.User>) : RecyclerView.Adapter<UsersRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,11 +24,12 @@ class UsersRecyclerViewAdapter(private val userList: ArrayList<User>) : Recycler
     }
 
     override fun getItemCount(): Int {
+        Timber.tag("users size in adapter:").d(userList.size.toString())
         return userList.size
     }
 
     class ViewHolder(private val binding: ItemSingleUserBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(user: GetUsersResponse.User) {
             binding.tvUsername.text = user.name
             binding.tvUserEmail.text = user.email
 
@@ -41,7 +43,7 @@ class UsersRecyclerViewAdapter(private val userList: ArrayList<User>) : Recycler
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spiUserRole.adapter = adapter
 
-            when (user.role) {
+            when (user.role.id) {
                 1 -> binding.spiUserRole.setSelection(0) // admin
                 2 -> binding.spiUserRole.setSelection(1) // member
                 else -> binding.spiUserRole.setSelection(1) // Default to member if unknown role

@@ -1,4 +1,4 @@
-package dev.gdsc_dut.android_xml_base_project.presentation.main.user_management.account
+package dev.gdsc_dut.android_xml_base_project.presentation.main.user_management.users
 
 import androidx.lifecycle.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,16 +8,13 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
-class AccountViewModel
+class UsersViewModel
 @Inject constructor(private val userRepository: UserRepository) : BaseViewModel() {
-    fun currentUser() = liveData(Dispatchers.IO) {
-        emit(userRepository.getCurrentUser().getOrNull())
+    fun getUsers() = liveData(Dispatchers.IO) {
+        emit(userRepository.getUsers().getOrNull())
     }
 
-    fun updateUser(
-        name: String,
-        email: String,
-    ) = liveData(Dispatchers.IO) {
-        emit(userRepository.updateUser(name, email).getOrNull())
+    val currentUser = liveData(Dispatchers.IO) {
+        emit(userRepository.getCurrentUser().getOrNull())
     }
 }
