@@ -5,8 +5,9 @@ import dev.gdsc_dut.android_xml_base_project.data.local.LocalUserDataSource
 import dev.gdsc_dut.android_xml_base_project.data.remote.APIService
 import dev.gdsc_dut.android_xml_base_project.data.remote.request.auth.LoginRequest
 import dev.gdsc_dut.android_xml_base_project.data.remote.request.auth.RegisterRequest
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
@@ -20,13 +21,20 @@ class AuthenticationRepository
         private val localUserDataSource: LocalUserDataSource,
         private val appDispatchers: AppDispatchers,
     ) {
+        private val userFlow by lazy {
+            localUserDataSource
+                .jwt
+                .map { it.firstOrNull() }
+                .distinctUntilChanged()
+        }
+
+        fun getUser() = userFlow
+
         suspend fun login(
             email: String,
             password: String,
         ) = runCatching {
             withContext(appDispatchers.io) {
-                delay(1000)
-
                 apiService
                     .login(body = LoginRequest(email, password))
                     .also {

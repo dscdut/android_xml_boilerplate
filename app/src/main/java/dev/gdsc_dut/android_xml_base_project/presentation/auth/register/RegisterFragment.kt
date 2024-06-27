@@ -41,7 +41,7 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
         binding.etPassword
             .textChanges()
             .skipInitialValue()
-            .onEach { viewModel.changePhoneNumber(it.toString()) }
+            .onEach { viewModel.changePassword(it.toString()) }
             .launchIn(lifecycleScope)
 
         binding.etConfirmationPassword
@@ -53,7 +53,7 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
         binding.etPhoneNumber
             .textChanges()
             .skipInitialValue()
-            .onEach { viewModel.changePassword(it.toString()) }
+            .onEach { viewModel.changePhoneNumber(it.toString()) }
             .launchIn(lifecycleScope)
 
         binding.btnRegister.setOnClickListener {

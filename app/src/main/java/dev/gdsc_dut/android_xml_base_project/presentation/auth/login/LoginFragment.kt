@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.gdsc_dut.android_xml_base_project.R
@@ -12,6 +13,7 @@ import dev.gdsc_dut.android_xml_base_project.core.base.BaseFragment
 import dev.gdsc_dut.android_xml_base_project.databinding.FragmentLoginBinding
 import dev.gdsc_dut.android_xml_base_project.presentation.main.MainActivity
 import dev.gdsc_dut.android_xml_base_project.utils.extensions.collectIn
+import dev.gdsc_dut.android_xml_base_project.utils.extensions.hideSoftKeyboard
 import dev.gdsc_dut.android_xml_base_project.utils.extensions.startActivity
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
@@ -46,6 +48,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             .launchIn(lifecycleScope)
 
         binding.btnLogin.setOnClickListener {
+            binding.btnLogin.hideSoftKeyboard()
             viewModel.login()
         }
     }

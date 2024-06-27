@@ -17,11 +17,9 @@ import dev.gdsc_dut.android_xml_base_project.presentation.auth.AuthActivity
 import dev.gdsc_dut.android_xml_base_project.presentation.main.MainActivity
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity(R.layout.activity_splash) {
-
     private val binding by viewBinding<ActivitySplashBinding>()
 
     private val viewModel: SplashViewModel by viewModels()
@@ -34,9 +32,6 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
         splashScreen.setKeepOnScreenCondition {
             true
         }
-
-        viewModel.getAuthenticationState()
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collect {
@@ -46,6 +41,7 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
                             startActivity<MainActivity>()
                             finish()
                         }
+
                         AuthenticationState.UNAUTHENTICATED -> {
                             startActivity<AuthActivity>()
                             finish()
@@ -55,5 +51,4 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
             }
         }
     }
-
 }

@@ -18,6 +18,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.gdsc_dut.android_xml_base_project.BuildConfig
 import dev.gdsc_dut.android_xml_base_project.core.AppDispatchers
 import dev.gdsc_dut.android_xml_base_project.core.AppDispatchersImpl
 import dev.gdsc_dut.android_xml_base_project.data.local.LocalUserDataSource
@@ -80,9 +81,9 @@ abstract class AppModule {
             val logging = HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
             return OkHttpClient
                 .Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(1, TimeUnit.MINUTES)
+                .writeTimeout(1, TimeUnit.MINUTES)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(logging)
                 .build()
@@ -93,7 +94,7 @@ abstract class AppModule {
         fun provideRetrofit(
             moshi: Moshi,
             client: OkHttpClient,
-            @BaseUrl baseUrl: String,c
+            @BaseUrl baseUrl: String,
         ): Retrofit =
             Retrofit
                 .Builder()

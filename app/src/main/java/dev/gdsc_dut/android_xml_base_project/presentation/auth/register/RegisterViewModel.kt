@@ -74,7 +74,7 @@ class RegisterViewModel
                 authenticationRepository
                     .register(
                         email = currentState.email,
-                        name = "",
+                        name = currentState.fullName,
                         role = 1,
                         password = currentState.password,
                     ).onSuccess {
