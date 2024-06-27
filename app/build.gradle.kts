@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+import java.io.FileInputStream
 
 plugins {
     alias(libs.plugins.hilt.android)
@@ -6,6 +8,11 @@ plugins {
     alias(libs.plugins.navigation.safeargs)
     alias(libs.plugins.ksp.gradle)
 }
+
+val secretProperties = Properties()
+val secretPropertiesFile: File = rootProject.file("secret.properties")
+secretProperties.load(FileInputStream(secretPropertiesFile))
+
 
 android {
     namespace = "dev.gdsc_dut.android_xml_base_project"
@@ -22,6 +29,11 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            buildConfigField("String", "BASE_URL", "${secretProperties["BASE_URL"]}")
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(

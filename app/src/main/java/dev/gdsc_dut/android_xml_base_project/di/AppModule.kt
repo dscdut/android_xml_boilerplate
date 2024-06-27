@@ -28,9 +28,14 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 const val AUTH_DATA = "com.example.android_xml_base_project.auth_data"
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+internal annotation class BaseUrl
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -40,6 +45,11 @@ abstract class AppModule {
     abstract fun appDispatchers(impl: AppDispatchersImpl): AppDispatchers
 
     internal companion object {
+
+        @Provides
+        @BaseUrl
+        fun baseUrl(): String = BuildConfig.BASE_URL
+
         @Provides
         @Singleton
         fun dataStore(@ApplicationContext applicationContext: Context): DataStore<Preferences> =
@@ -83,12 +93,13 @@ abstract class AppModule {
         fun provideRetrofit(
             moshi: Moshi,
             client: OkHttpClient,
+            @BaseUrl baseUrl: String,c
         ): Retrofit =
             Retrofit
                 .Builder()
                 .client(client)
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .baseUrl("http://localhost:8080/")
+                .baseUrl(baseUrl)
                 .build()
 
         @Provides

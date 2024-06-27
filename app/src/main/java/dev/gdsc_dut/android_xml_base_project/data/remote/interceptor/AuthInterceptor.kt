@@ -1,6 +1,8 @@
 package dev.gdsc_dut.android_xml_base_project.data.remote.interceptor
 
 import dev.gdsc_dut.android_xml_base_project.data.local.LocalUserDataSource
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -22,7 +24,7 @@ class AuthInterceptor
                     else -> {
                         when (
                             val token =
-                                runBlocking { userLocalSource.jwt }.also { Timber.d("Current token: $it") }
+                                runBlocking { userLocalSource.jwt.firstOrNull() }.also { Timber.d("Current token: $it") }
                         ) {
                             else ->
                                 request

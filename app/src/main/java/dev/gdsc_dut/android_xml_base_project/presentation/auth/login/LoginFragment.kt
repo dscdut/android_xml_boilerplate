@@ -28,7 +28,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     override fun setupView() {
         binding.signUpButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
     }
 
