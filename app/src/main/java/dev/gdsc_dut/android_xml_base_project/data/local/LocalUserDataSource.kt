@@ -13,9 +13,7 @@ class LocalUserDataSource(
     private val appDispatchers: AppDispatchers,
 ) {
     private val jwtKey = stringPreferencesKey("jwt")
-    val jwt = dataStore.data.map { pref ->
-        pref[jwtKey].orEmpty()
-    }
+    val jwt = dataStore.data.map { pref -> pref[jwtKey]}
 
      suspend fun update(newValue: String) =
         withContext(appDispatchers.io) {

@@ -21,14 +21,7 @@ class AuthenticationRepository
         private val localUserDataSource: LocalUserDataSource,
         private val appDispatchers: AppDispatchers,
     ) {
-        private val userFlow by lazy {
-            localUserDataSource
-                .jwt
-                .map { it.firstOrNull() }
-                .distinctUntilChanged()
-        }
-
-        fun getUser() = userFlow
+        fun getUser() = localUserDataSource.jwt
 
         suspend fun login(
             email: String,
