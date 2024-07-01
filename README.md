@@ -19,7 +19,7 @@ Template for Android projects in UniHack 2024 using Android XML View
 ## How to use this template?
 - Clone this repository
 ```shell
-git clone 
+git clone https://github.com/dscdut/android_xml_boilerplate.git
 ```
 - Change the package name if need
 - Copy `secret.example.properties` to `secret.properties`, this file will store BASE URL, api key, etc.
